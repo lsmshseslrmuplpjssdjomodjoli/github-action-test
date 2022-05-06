@@ -1,0 +1,18 @@
+name: Actions Workflow
+on: [push]
+jobs:
+  run-github-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simple JS Action
+        id: greet #! ..................................... note_0001
+        uses: actions/hello-world-javascript-action@e76147da8e5c81eaf017dede5645551d4b94427b
+        with:
+          who-to-greet: John
+      - name: Log Greeting Time
+        run: echo "${{ steps.greet.outputs.time }}" #!.... note_0002
+
+# note_0001: 他所から steps.greet でアクセスできるようにする
+# note_0002: ステップ「steps.greet」の出力結果(outputs)は、変数「time」に格納されている.
+#            <https://github.com/actions/hello-world-javascript-action#hello-world-javascript-action>
+
