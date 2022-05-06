@@ -3,7 +3,7 @@ name: Shell Commands #! the name of our entire workflow (02:21)
 on: [push]
 
 jobs:
-  run-shell-command:
+  run-shell-command: #! note_0001
     runs-on: ubuntu-latest
     steps: 
       - name: echo a string
@@ -21,6 +21,7 @@ jobs:
         shell: python
   run-windwos-commands:
     runs-on: windows-latest
+    needs: ["run-shell-command"] #! 上述の「note_0001」の終了後に実行する
     steps:
       - name: Directory PowerShell
         run: Get-Location 
