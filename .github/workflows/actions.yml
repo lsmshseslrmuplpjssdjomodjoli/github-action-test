@@ -4,6 +4,21 @@ jobs:
   run-github-action:
     runs-on: ubuntu-latest
     steps:
+      - name: List Files
+        run: |
+          pwd
+          ls -Altr
+          echo $GITHUB_SHA #! ............................ clone 対象の CommitID (HEAD)
+          echo $GITHUB_REPOSITORY #!...................... 本ワークフローファイルが格納されているリポジトリ
+          echo $GITHUB_WORKSPACE #!....................... GitHub-hosted server におけるワークスペース
+          # git clone git@github:$GITHUB_REPOSITORY
+          # git checkout git@github:$GITHUB_SHA
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: List Files After Checkout
+        run: |
+          pwd
+          ls -Altr
       - name: Simple JS Action
         id: greet #! ..................................... note_0001
         uses: actions/hello-world-javascript-action@e76147da8e5c81eaf017dede5645551d4b94427b
