@@ -1,0 +1,21 @@
+name: Shell Commands #! the name of our entire workflow (02:21)
+
+on: [push]
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: echo a string
+        run: echo "Hello World"
+        timeout-minutes: 0
+      - name: multiline script 
+        run: |
+           node -v 
+           npm -v
+           python -v
+      - name: python Command 
+        run: |
+          import platform 
+          print(platform.processor())
+        shell: python
