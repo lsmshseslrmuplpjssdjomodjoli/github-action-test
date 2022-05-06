@@ -11,10 +11,10 @@ jobs:
           echo $GITHUB_SHA #! ............................ clone 対象の CommitID (HEAD)
           echo $GITHUB_REPOSITORY #!...................... 本ワークフローファイルが格納されているリポジトリ
           echo $GITHUB_WORKSPACE #!....................... GitHub-hosted server におけるワークスペース
-          # git clone git@github:$GITHUB_REPOSITORY
-          # git checkout git@github:$GITHUB_SHA
-      - name: Checkout
-        uses: actions/checkout@v1
+          git clone git@github:$GITHUB_REPOSITORY
+          git checkout git@github:$GITHUB_SHA
+#     - name: Checkout
+#       uses: actions/checkout@v1
       - name: List Files After Checkout
         run: |
           pwd
