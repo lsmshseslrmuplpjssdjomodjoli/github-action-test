@@ -1,11 +1,20 @@
 name: Actions Workflow
 on: 
-# push:
-  schedule:
-    - cron: "0/5 * * * *" #!.............................. およそ5分間に1回実行する
-    - cron: "0/6 * * * *" #!.............................. およそ6分間に1回実行する
-  pull_request:
-    types: [closed, assinged, opened, reopened] #!........ Push と RP の両方をトリガとする
+  push:
+    branches:
+      - master
+      - "feature/*"  #!................................... note_0003
+      - "feature/**" #!................................... note_0004
+      - "!feature/ignoreC" #!............................. branches-ignore と同じ
+    branches-ignore:
+      - 'feature/ignoreD'
+    tags:
+      - v1.*
+    paths:
+      - "**.js"
+      - "!ignore01.js"
+    paths-ignore:
+      - "ignore02.js"
 jobs:
   run-github-action:
     runs-on: ubuntu-latest
@@ -36,4 +45,5 @@ jobs:
 # note_0001: 他所から steps.greet でアクセスできるようにする
 # note_0002: ステップ「steps.greet」の出力結果(outputs)は、変数「time」に格納されている.
 #            <https://github.com/actions/hello-world-javascript-action#hello-world-javascript-action>
-
+# note_0003: matches feature/featA, feature/featB, doesn't match feature/feat/a
+# note_0004: matches feature/featA, feature/featB, feature/feat/a
