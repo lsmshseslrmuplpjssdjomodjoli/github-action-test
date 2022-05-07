@@ -1,5 +1,8 @@
 name: Actions Workflow
-on: [push, pull_request] #!............................... Push と RP の両方をトリガとする
+on: 
+  push:
+  pull_request:
+    types: [closed, assinged, opened, reopened] #!........ Push と RP の両方をトリガとする
 jobs:
   run-github-action:
     runs-on: ubuntu-latest
