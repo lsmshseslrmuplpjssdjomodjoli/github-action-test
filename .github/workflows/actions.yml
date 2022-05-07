@@ -1,6 +1,9 @@
 name: Actions Workflow
 on: 
-  push:
+# push:
+  schedule:
+    - cron: "0/5 * * * *" #!.............................. およそ5分間に1回実行する
+    - cron: "0/6 * * * *" #!.............................. およそ6分間に1回実行する
   pull_request:
     types: [closed, assinged, opened, reopened] #!........ Push と RP の両方をトリガとする
 jobs:
