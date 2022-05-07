@@ -1,11 +1,9 @@
 name: Actions Workflow
-on: [push]
+on: [push, pull_request] #!............................... Push と RP の両方をトリガとする
 jobs:
   run-github-action:
     runs-on: ubuntu-latest
     steps:
-      - name: playload
-        run: echo ${{ github.event.client_payload.env }}
       - name: List Files
         run: |
           pwd
@@ -13,10 +11,10 @@ jobs:
           echo $GITHUB_SHA #! ............................ clone 対象の CommitID (HEAD)
           echo $GITHUB_REPOSITORY #!...................... 本ワークフローファイルが格納されているリポジトリ
           echo $GITHUB_WORKSPACE #!....................... GitHub-hosted server におけるワークスペース
-          git clone git@github:$GITHUB_REPOSITORY
-          git checkout $GITHUB_SHA
-#     - name: Checkout
-#       uses: actions/checkout@v1
+          # git clone git@github:$GITHUB_REPOSITORY
+          # git checkout git@github:$GITHUB_SHA
+      - name: Checkout
+        uses: actions/checkout@v1
       - name: List Files After Checkout
         run: |
           pwd
