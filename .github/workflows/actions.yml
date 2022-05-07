@@ -5,9 +5,9 @@ on:
       - master
       - "feature/*"  #!................................... note_0003
       - "feature/**" #!................................... note_0004
-      - "!feature/ignoreC" #!............................. branches-ignore と同じ
-    branches-ignore:
-      - 'feature/ignoreD'
+      - "!feature/ignoreC" #!............................. branches-ignore と同じ. だが、同時定義は不可
+#   branches-ignore:
+#     - 'feature/ignoreD'
     tags:
       - v1.*
     paths:
