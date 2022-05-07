@@ -7,14 +7,14 @@ on:
       - "feature/**" #!................................... note_0004
       - "!feature/ignoreC" #!............................. branches-ignore と同じ. だが、同時定義は不可
 #   branches-ignore:
-#     - 'feature/ignoreD'
+#     - 'feature/ignoreC'
     tags:
       - v1.*
     paths:
       - "**.js"
       - "!ignore01.js"
-    paths-ignore:
-      - "ignore02.js"
+#   paths-ignore:
+#     - "ignore01.js"
 jobs:
   run-github-action:
     runs-on: ubuntu-latest
