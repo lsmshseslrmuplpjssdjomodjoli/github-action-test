@@ -9,7 +9,7 @@ jobs:
       - name: echo a string
         run: eecho "Hello World"
         timeout-minutes: 0
-        continue-on-error: true
+        continue-on-error: false
       - name: multiline script 
         run: |
            node -v 
