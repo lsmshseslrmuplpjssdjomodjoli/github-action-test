@@ -5,18 +5,17 @@ on: [push]
 jobs:
   run-shell-command: #! note_0001
     runs-on: ubuntu-latest
-    timeout-minutes: 1 #! 1分でタイムアウトとする
     steps: 
       - name: echo a string
-        run: |
-          sleep 120    #! 2分待機する
-          echo "Hello World"
+        run: echo "Hello World"
         timeout-minutes: 0
         continue-on-error: false
       - name: multiline script 
+        timeout-minutes: 1 #! 1分でタイムアウトとする
         run: |
            node -v 
            npm -v
+           sleep 120    #! 2分待機する
            python --version
       - name: python Command 
         run: |
