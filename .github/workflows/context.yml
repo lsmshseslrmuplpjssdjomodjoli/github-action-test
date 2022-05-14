@@ -1,6 +1,15 @@
 name: Context
 on: [push, pull_request]
 jobs:
+  functions: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: dump
+        run: |
+          echo ${{ contains( 'hello', '11' ) }}   #! 「11」は含んでいないので偽
+          echo ${{ startsWith( 'hello', 'he' ) }} #! 「he」で開始するので新 
+          echo ${{ endsWith( 'hello', '1o' ) }}   #! 「1o」は含んでいないので偽
+          echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!' ) }}
   dump_contexts_to_log:
     runs-on: ubuntu-latest
     steps:
